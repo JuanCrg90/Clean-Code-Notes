@@ -5,21 +5,22 @@
 * [Chapter 2 -  Meaningful Names](#chapter2)
 * [Chapter 3 -  Functions](#chapter3)
 * [Chapter 4 -  Comments](#chapter4)
+* [Chapter 5 -  Formatting](#chapter5)
 
 
-<a name="chapter1">  
+<a name="chapter1">
 ## Chapter 1 -  Clean Code
 </a>
 This Book is about good programming. It's about how to write good code, and how to transform bad code into good code.
 
-The code represents the detail of the requirements and the details cannot be ignored or abstracted. We may create languages that are closer to the requirements. We can create tools that help us parse and assemble those requirements into formal structures. But we will never eliminate necessary precision. 
+The code represents the detail of the requirements and the details cannot be ignored or abstracted. We may create languages that are closer to the requirements. We can create tools that help us parse and assemble those requirements into formal structures. But we will never eliminate necessary precision.
 
 ### Why write bad code?
 - Are you in a rush?
 - Do you try to go "fast"?
 - Do not you have time to do a good job?
 - Are you tired of work in the same program/module?
-- Does your Boss push you to finish soon?  
+- Does your Boss push you to finish soon?
 
 The previous arguments could create a swamp of senseless code.
 
@@ -48,7 +49,7 @@ It's a good practice apply the [Boy Scout Rule](http://programmer.97things.oreil
 > Always leave the campground cleaner than you found it.
 
 
-<a name="chapter2">  
+<a name="chapter2">
 ## Chapter 2 -  Meaningful Names
 </a>
 
@@ -57,7 +58,7 @@ Names are everywhere in software. Files, directories, variables functions, etc. 
 ### Use Intention-Revealing Names
 It is easy to say that names reveal intent. Choosing good names takes time, but saves more than it takes. So take care with your names and change them when you find better ones.
 
-The name of a variable, function or class, should answer all the big questions. It should tell you why it exists, what it does, and how is used. **If a name requires a comment, then the name does not reveals its intent**.  
+The name of a variable, function or class, should answer all the big questions. It should tell you why it exists, what it does, and how is used. **If a name requires a comment, then the name does not reveals its intent**.
 
 | Does not reveals intention     | Reveals intention     |
 | -------------                  | -------------         |
@@ -132,7 +133,7 @@ public static void copyChars(char a1[], char a2[]) {
 }
 ```
 
-We can improve the code selecting more explicit argument names: 
+We can improve the code selecting more explicit argument names:
 ```java
 public static void copyChars(char source[], char destination[]) {
   for (int i = 0; i < source.length; i++) {
@@ -235,7 +236,7 @@ In an imaginary application called “Gas Station Deluxe,” it is a bad idea to
 
 Shorter names are generally better than longer ones, so long as they are clear. Add no more context to a name than is necessary.
 
-<a name="chapter3">  
+<a name="chapter3">
 ## Chapter 3 -  Functions
 </a>
 
@@ -247,7 +248,7 @@ The first rule of functions is that they should be small. The second rule of fun
 #### Blocks and Indenting
 This implies that the blocks within `if` statements, `else` statements, `while` statements, and so on should be one line long. Probably that line should be a function call. Not only does this keep the enclosing function small, but also adds documentary value because the function called within the block can have a nicely descriptive name.
 
-This also implies that functions should not be large enough to hold nested structures. Therefore, the indent level of a function should not be greater than one or two. This, of course, makes the functions easy to read and understand. 
+This also implies that functions should not be large enough to hold nested structures. Therefore, the indent level of a function should not be greater than one or two. This, of course, makes the functions easy to read and understand.
 
 ### Do One Thing
 
@@ -262,7 +263,7 @@ If you have a function divided in sections like *declarations*, *initialization*
 In order to make sure our functions are doing "one thing", we need to make sure that the statements within our function are all at the same level of abstraction.
 
 #### Reading Code from Top to Bottom: *The Stepdown Rule*
-We want the code to read like a top-down narrative. 5 We want every function to be followed by those at the next level of abstraction so that we can read the program, descending one level of abstraction at a time as we read down the list of functions. 
+We want the code to read like a top-down narrative. 5 We want every function to be followed by those at the next level of abstraction so that we can read the program, descending one level of abstraction at a time as we read down the list of functions.
 
 To say this differently, we want to be able to read the program as though it were a set
 of TO paragraphs, each of which is describing the current level of abstraction and referencing subsequent TO paragraphs at the next level down.
@@ -285,7 +286,7 @@ It’s hard to make a small switch statement. 6 Even a switch statement with onl
 
 Half the battle to achieving that principle is choosing good names for small functions that do one thing. The smaller and more focused a function is, the easier it is to choose a descriptive name.
 
-Don’t be afraid to make a name long. A long descriptive name is better than a short enigmatic name. A long descriptive name is better than a long descriptive comment. Use a naming convention that allows multiple words to be easily read in the function names, and then make use of those multiple words to give the function a name that says what it does. 
+Don’t be afraid to make a name long. A long descriptive name is better than a short enigmatic name. A long descriptive name is better than a long descriptive comment. Use a naming convention that allows multiple words to be easily read in the function names, and then make use of those multiple words to give the function a name that says what it does.
 
 Choosing descriptive names will clarify the design of the module in your mind and help you to improve it. It is not at all uncommon that hunting for a good name results in a favorable restructuring of the code.
 
@@ -316,7 +317,7 @@ Dyads aren’t evil, and you will certainly have to write them. However, you sho
 Functions that take three arguments are significantly harder to understand than dyads. The issues of ordering, pausing, and ignoring are more than doubled. I suggest you think very carefully before creating a triad.
 
 #### Argument Objects
-Compare:  
+Compare:
 ```java
 Circle makeCircle(double x, double y, double radius);
 ```
@@ -350,7 +351,7 @@ While we are sympathetic to the goals and disciplines of structured programming,
 So if you keep your functions small, then the occasional multiple `return` , `break` , or `continue` statement does no harm and can sometimes even be more expressive than the single-entry, single-exit rule. On the other hand, `goto` only makes sense in large functions, so it should be avoided
 
 
-<a name="chapter4">  
+<a name="chapter4">
 ## Chapter 4 -  Comments
 </a>
 
@@ -411,7 +412,7 @@ Sometimes it is just helpful to translate the meaning of some obscure argument o
 #### Warning of concequences
 Sometimes it is useful to warn other programmers about certain consequences.
 
-```java 
+```java
 // Don't run unless you
 // have some time to kill.
 public void _testWithReallyBigFile() {
@@ -459,7 +460,7 @@ Most comments fall into this category. Usually they are crutches or excuses for 
 
 Plopping in a comment just because you feel you should or because the process requires it, is a hack. If you decide to write a comment, then spend the time necessary to make sure it is the best comment you can write. Example:
 
-```java 
+```java
 public void loadProperties() {
 
   try {
@@ -495,7 +496,7 @@ What purpose does this comment serve? It’s certainly not more informative than
 Sometimes, with all the best intentions, a programmer makes a statement in his comments that isn't precise enough to be accurate. Consider for another moment the example of the previous section. The method  does not return when `this.closed` becomes `true`. It returns if `this.closed` is `true`; otherwise, it waits for a blind time-out and then throws an exception if `this.closed` is still not true.
 
 #### Mandated Comments
-It is just plain silly to have a rule that says that every function must have a javadoc, or every variable must have a comment. Comments like this just clutter up the code, propagate lies, and lend to general confusion and disorganization. 
+It is just plain silly to have a rule that says that every function must have a javadoc, or every variable must have a comment. Comments like this just clutter up the code, propagate lies, and lend to general confusion and disorganization.
 
 ```java
 /**
@@ -606,7 +607,7 @@ public class wc {
 You could  break the code in small functions instead to use this type of comments.
 
 #### Attributions and Bylines
-Example: 
+Example:
 
 `/* Added by Rick */`
 
@@ -621,7 +622,7 @@ response.setBody(formatter.getResultStream(), formatter.getByteCount());
 // StreamReader reader = new StreamReader(resultsStream);
 // response.setContent(reader.read(formatter.getByteCount()));
 ```
- 
+
 If you don't need anymore, please delete it, you can back later with your VCS if you need it again.
 
 #### HTML Comments
@@ -666,4 +667,167 @@ Short functions don’t need much description. A well-chosen name for a small fu
 
 #### Javadocs in Nonpublic Code
 Javadocs are for public APIs, in nonpublic code could be a distraction more than a help.
+
+<a name="chapter5">
+## Chapter 5 -  Formatting
+</a>
+
+Code formatting is important. It is too important to ignore and it is too important to treat religiously. Code formatting is about communication, and communication is the professional developer’s first order of business.
+
+### Vertical Formatting
+
+#### Vertical Openness Between Concepts
+This concept consist in how to you separate concepts in your code, In the next example we can appreciate it.
+
+```java
+package fitnesse.wikitext.widgets;
+
+import java.util.regex.*;
+
+public class BoldWidget extends ParentWidget {
+  public static final String REGEXP = "'''.+?'''";
+  private static final Pattern pattern = Pattern.compile("'''(.+?)'''",
+      Pattern.MULTILINE + Pattern.DOTALL
+      );
+
+  public BoldWidget(ParentWidget parent, String text) throws Exception {
+    super(parent);
+    Matcher match = pattern.matcher(text);
+    match.find();
+    addChildWidgets(match.group(1));
+  }
+
+  public String render() throws Exception {
+    StringBuffer html = new StringBuffer("<b>");
+    html.append(childHtml()).append("</b>");
+    return html.toString();
+  }
+}
+```
+
+```java
+package fitnesse.wikitext.widgets;
+import java.util.regex.*;
+public class BoldWidget extends ParentWidget {
+  public static final String REGEXP = "'''.+?'''";
+  private static final Pattern pattern = Pattern.compile("'''(.+?)'''",
+  Pattern.MULTILINE + Pattern.DOTALL);
+  public BoldWidget(ParentWidget parent, String text) throws Exception {
+    super(parent);
+    Matcher match = pattern.matcher(text); match.find(); addChildWidgets(match.group(1));
+  }
+  public String render() throws Exception { StringBuffer html = new StringBuffer("<b>"); html.append(childHtml()).append("</b>"); return html.toString();
+  }
+}
+```
+As you can see, the readability of the first example is greater than that of the second.
+
+#### Vertical Density
+The vertical density implies close association. So lines of code that are tightly related should appear vertically dense. Check the follow example:
+
+```Java
+public class ReporterConfig {
+
+	/**
+	 * The class name of the reporter listener */
+	private String m_className;
+
+	/**
+	 * The properties of the reporter listener */
+	private List<Property> m_properties = new ArrayList<Property>();
+
+	public void addProperty(Property property) { m_properties.add(property);
+	}
+```
+
+```java
+public class ReporterConfig {
+  private String m_className;
+  private List<Property> m_properties = new ArrayList<Property>();
+
+  public void addProperty(Property property) {
+    m_properties.add(property);
+  }
+}
+```
+
+The second code it's much easier to read. It fits in an "eye-full".
+
+#### Vertical Distance
+
+**Variable Declarations**. Variables should be declared as close to their usage as possible. Because our functions are very short, local variables should appear at the top of each function,
+
+**Instance variables**, on the other hand, should be declared at the top of the class. This should not increase the vertical distance of these variables, because in a well-designed class, they are used by many, if not all, of the methods of the class.
+
+There have been many debates over where instance variables should go. In C++ we commonly practiced the so-called scissors rule, which put all the instance variables at the bottom. The common convention in Java, however, is to put them all at the top of the class. I see no reason to follow any other convention. The important thing is for the instance variables to be declared in one well-known place. Everybody should know where to go to see the declarations.
+
+
+**Dependent Functions**. If one function calls another, they should be vertically close, and the caller should be above the callee, if at all possible. This gives the program a natural flow. If the convention is followed reliably, readers will be able to trust that function definitions will follow shortly after their use.
+
+**Conceptual Affinity**. Certain bits of code want to be near other bits. They have a certain conceptual affinity. The stronger that affinity, the less vertical distance there should be between them.
+
+#### Vertical Ordering
+In general we want function call dependencies to point in the downward direction. That is, a function that is called should be below a function that does the calling. This creates a nice flow down the source code module from high level to low level. *(This is the exact opposite of languages like Pascal, C, and C++ that enforce functions to be defined, or at least declared, before they are used)*
+
+
+### Horizontal Formatting
+
+#### Horizontal Openness and Density
+We use horizontal white space to associate things that are strongly related and disassociate things that are more weakly related. Example:
+
+```java
+private void measureLine(String line) {
+  lineCount++;
+  int lineSize = line.length();
+  totalChars += lineSize;
+  lineWidthHistogram.addLine(lineSize, lineCount);
+  recordWidestLine(lineSize);
+}
+```
+
+Assignment statements have two distinct and major elements: the left side and the right side. The spaces make that separation obvious.
+
+#### Horizontal Alignment
+
+```java
+public class Example implements Base
+{
+  private   Socket      socket;
+  private   inputStream input;
+  protected long        requestProgress;
+
+  public Expediter(Socket      s,
+                   inputStream input) {
+    this.socket =     s;
+    this.input  =     input;
+  }
+}
+```
+
+In modern languages this type of alignment is not useful. The alignment seems to emphasize the wrong things and leads my eye away from the true intent.
+
+```java
+public class Example implements Base
+{
+  private Socket socket;
+  private inputStream input;
+  protected longrequestProgress;
+
+  public Expediter(Socket s, inputStream input) {
+
+    this.socket = s;
+    this.input = input;
+  }
+}
+```
+This is a better approach.
+
+
+### Indentation
+The indentation it's important because help us to have a visible hierarchy and well defined blocks.
+
+### Team Rules
+Every programmer has his own favorite formatting rules, but if he works in a team, then the team rules.
+
+A team of developers should agree upon a single formatting style, and then every member of that team should use that style. We want the software to have a consistent style. We don't want it to appear to have been written by a bunch of disagreeing individuals.
 
