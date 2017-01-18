@@ -7,6 +7,7 @@
 * [Chapter 4 -  Comments](#chapter4)
 * [Chapter 5 -  Formatting](#chapter5)
 * [Chapter 6 -  Objects and Data Structures](#chapter6)
+* [Chapter 7 -  Error Handling](#chapter7)
 
 
 <a name="chapter1">
@@ -874,25 +875,25 @@ public class Geometry {
     }
     else if (shape instanceof Circle) {
       Circle c = (Circle)shape;
-      return PI * c.radius * c.radius; 
+      return PI * c.radius * c.radius;
     }
-    throw new NoSuchShapeException(); 
+    throw new NoSuchShapeException();
   }
 }
-``` 
+```
 
 **Polymorphic Shape**
 ```java
-public class Square implements Shape { 
+public class Square implements Shape {
   private Point topLeft;
   private double side;
-  
+
   public double area() {
     return side*side;
   }
 }
 
-public class Rectangle implements Shape { 
+public class Rectangle implements Shape {
   private Point topLeft;
   private double height;
   private double width;
@@ -902,7 +903,7 @@ public class Rectangle implements Shape {
   }
 }
 
-public class Circle implements Shape { 
+public class Circle implements Shape {
   private Point center;
   private double radius;
   public final double PI = 3.141592653589793;
@@ -913,7 +914,7 @@ public class Circle implements Shape {
 }
 ```
 
-Again, we see the complimentary nature of these two definitions; they are virtual opposites! This exposes the fundamental dichotomy between objects and data structures: 
+Again, we see the complimentary nature of these two definitions; they are virtual opposites! This exposes the fundamental dichotomy between objects and data structures:
 
 > Procedural code (code using data structures) makes it easy to add new functions without changing the existing data structures. OO code, on the other hand, makes it easy to add new classes without changing existing functions.
 
@@ -925,16 +926,39 @@ Mature programmers know that the idea that everything is an object is a myth. So
 
 ### The Law of [Demeter](https://en.wikipedia.org/wiki/Law_of_Demeter)
 
-There is a well-known heuristic called the Law of Demeter2 that says a module should not know about the innards of the objects it manipulates.
+There is a well-known heuristic called the Law of Demeter that says a module should not know about the innards of the objects it manipulates.
 
-More precisely, the Law of Demeter says that a method f of a class C should only call the methods of these:
-- C
-- An object created by f
-- An object passed as an argument to f
-- An object held in an instance variable of C
+More precisely, the Law of Demeter says that a method `f` of a class `C` should only call the methods of these:
+- `C`
+- An object created by `f`
+- An object passed as an argument to `f`
+- An object held in an instance variable of `C`
 
 The method should not invoke methods on objects that are returned by any of the allowed functions. In other words, talk to friends, not to strangers.
 
 ### Data Transfer Objects
 
 The quintessential form of a data structure is a class with public variables and no functions. This is sometimes called a data transfer object, or DTO. DTOs are very useful structures, especially when communicating with databases or parsing messages from sockets, and so on. They often become the first in a series of translation stages that convert raw data in a database into objects in the application code.
+
+<a name="chapter7">
+## Chapter 7 -  Error Handling
+</a>
+
+Many code bases are completely dominated by error handling. When I say dominated, I don't mean that error handling is all that they do. I mean that it is nearly impossible to see what the code does because of all of the scattered error handling. Error handling is important, but if it obscures logic, it's wrong.
+
+### Use Exceptions Rather Than Return Codes
+Back in the distant past there were many languages that didn't have exceptions. In those languages the techniques for handling and reporting errors were limited. You either set an error flag or returned an error code that the caller could check
+
+### Write Your Try-Catch-Finally Statement First
+In a way, try blocks are like transactions. Your catch has to leave your program in a consistent state, no matter what happens in the try. For this reason it is good practice to start with a try-catch-finally statement when you are writing code that could throw exceptions. This helps you define what the user of that code should expect, no matter what goes wrong with the code that is executed in the try.
+
+### Provide Context with Exceptions
+Each exception that you throw should provide enough context to determine the source and location of an error.
+
+Create informative error messages and pass them along with your exceptions. Mention the operation that failed and the type of failure. If you are logging in your application, pass along enough information to be able to log the error in your catch.
+
+### Don't Return Null
+If you are tempted to return null from a method, consider throwing an exception or returning a SPECIAL CASE object instead. If you are calling a null-returning method from a third-party API, consider wrapping that method with a method that either throws an exception or returns a special case object.
+
+### Don't Pass Null
+Returning null from methods is bad, but passing null into methods is worse. Unless you are working with an API which expects you to pass null, you should avoid passing null in your code whenever possible.
