@@ -54,7 +54,7 @@ It's a good practice apply the [Boy Scout Rule](http://programmer.97things.oreil
 
 
 <a name="chapter2">
-## Chapter 2 -  Meaningful Names
+<h1>Chapter 2 -  Meaningful Names</h1>
 </a>
 
 Names are everywhere in software. Files, directories, variables functions, etc. Because we do so much of it. We have better do it well.
@@ -241,7 +241,7 @@ In an imaginary application called “Gas Station Deluxe,” it is a bad idea to
 Shorter names are generally better than longer ones, so long as they are clear. Add no more context to a name than is necessary.
 
 <a name="chapter3">
-## Chapter 3 -  Functions
+<h1>Chapter 3 -  Functions</h1>
 </a>
 
 Functions are the first line of organization in any topic.
@@ -356,7 +356,7 @@ So if you keep your functions small, then the occasional multiple `return` , `br
 
 
 <a name="chapter4">
-## Chapter 4 -  Comments
+<h1>Chapter 4 -  Comments</h1>
 </a>
 
 Nothing can be quite so helpful as a well-placed comment. Nothing can clutter up a module more than frivolous dogmatic comments. Nothing can be quite so damaging as an old comment that propagates lies and misinformation.
@@ -673,7 +673,7 @@ Short functions don’t need much description. A well-chosen name for a small fu
 Javadocs are for public APIs, in nonpublic code could be a distraction more than a help.
 
 <a name="chapter5">
-## Chapter 5 -  Formatting
+<h1>Chapter 5 -  Formatting</h1>
 </a>
 
 Code formatting is important. It is too important to ignore and it is too important to treat religiously. Code formatting is about communication, and communication is the professional developer’s first order of business.
@@ -836,7 +836,7 @@ Every programmer has his own favorite formatting rules, but if he works in a tea
 A team of developers should agree upon a single formatting style, and then every member of that team should use that style. We want the software to have a consistent style. We don't want it to appear to have been written by a bunch of disagreeing individuals.
 
 <a name="chapter6">
-## Chapter 6 -  Objects and Data Structures
+<h1>Chapter 6 -  Objects and Data Structures</h1>
 </a>
 
 ### Data Abstraction
@@ -943,7 +943,7 @@ The method should not invoke methods on objects that are returned by any of the 
 The quintessential form of a data structure is a class with public variables and no functions. This is sometimes called a data transfer object, or DTO. DTOs are very useful structures, especially when communicating with databases or parsing messages from sockets, and so on. They often become the first in a series of translation stages that convert raw data in a database into objects in the application code.
 
 <a name="chapter7">
-## Chapter 7 -  Error Handling
+<h1>Chapter 7 -  Error Handling</h1>
 </a>
 
 Many code bases are completely dominated by error handling. When I say dominated, I don't mean that error handling is all that they do. I mean that it is nearly impossible to see what the code does because of all of the scattered error handling. Error handling is important, but if it obscures logic, it's wrong.
@@ -966,7 +966,7 @@ If you are tempted to return null from a method, consider throwing an exception 
 Returning null from methods is bad, but passing null into methods is worse. Unless you are working with an API which expects you to pass null, you should avoid passing null in your code whenever possible.
 
 <a name="chapter8">
-## Chapter 8 -  Boundaries
+<h1>Chapter 8 -  Boundaries</h1>
 </a>
 
 We seldom control all the software in our systems. Sometimes we buy third-party pack- ages or use open source. Other times we depend on teams in our own company to produce components or subsystems for us. Somehow we must cleanly integrate this foreign code with our own.
@@ -1015,7 +1015,7 @@ Interesting things happen at boundaries. Change is one of those things. Good sof
 
 
 <a name="chapter9">  
-## Chapter 9 -  Unit Tests  
+<h1>Chapter 9 -  Unit Tests</h1>  
 </a>  
 
 **T**est  
