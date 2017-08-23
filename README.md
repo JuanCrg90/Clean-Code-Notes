@@ -10,11 +10,12 @@
 * [Chapter 7 -  Error Handling](#chapter7)
 * [Chapter 8 -  Boundaries](#chapter8)
 * [Chapter 9 -  Unit Tests](#chapter9)
+* [Chapter 10 -  Classes](#chapter10)
 
 
-<a name="chapter1">  
-<h1>Chapter 1 -  Clean Code</h1>  
-</a>  
+<a name="chapter1">
+<h1>Chapter 1 -  Clean Code</h1>
+</a>
 This Book is about good programming. It's about how to write good code, and how to transform bad code into good code.
 
 The code represents the detail of the requirements and the details cannot be ignored or abstracted. We may create languages that are closer to the requirements. We can create tools that help us parse and assemble those requirements into formal structures. But we will never eliminate necessary precision.
@@ -988,7 +989,7 @@ public class Sensors {
   public Sensor getById(String id) {
     return (Sensor) sensors.get(id);
   }
-  //snip 
+  //snip
 }
 ```
 
@@ -1014,12 +1015,12 @@ Some times it's necessary work in a module that will be connected to another mod
 Interesting things happen at boundaries. Change is one of those things. Good software designs accommodate change without huge investments and rework. When we use code that is out of our control, special care must be taken to protect our investment and make sure future change is not too costly.
 
 
-<a name="chapter9">  
-<h1>Chapter 9 -  Unit Tests</h1>  
-</a>  
+<a name="chapter9">
+<h1>Chapter 9 -  Unit Tests</h1>
+</a>
 
-**T**est  
-**D**riven  
+**T**est
+**D**riven
 **D**evelopment
 
 ### The Three Laws of TDD
@@ -1039,7 +1040,7 @@ It's recomendable maintain only one asserts per tests, because this helps to mai
 
 ### Single concept per Test
 
-This rule will help you to keep short functions.  
+This rule will help you to keep short functions.
 - **Write one test per each concept that you need to verify**
 
 ### F.I.R.S.T
@@ -1049,3 +1050,38 @@ This rule will help you to keep short functions.
 - **Repeatable** Test Should be repeatable in any environment.
 - **Self-Validating** Test should have a boolean output. either they pass or fail.
 - **Timely** Unit tests should be written just before the production code that makes them pass. If you write tests after the production code, then you may find the production code to be hard to test.
+
+
+<a name="chapter10">
+<h1>Chapter 10 -  Classes</h1>
+</a>
+
+
+## Class Organization
+
+### Encapsulation
+We like to keep our variables and utility functions small, but we're not fanatic about it. Sometimes we need to make a variable or utility function protected so that it can be accessed by a test.
+
+## Classes Should be Small
+- First Rule: Classes should be small
+- Second Rule: **Classes should be smaller than the first rule**
+
+### The Single Responsibility Principle
+
+**Classes should have one responsibility - one reason to change**
+
+SRP is one of the more important concept in OO design. It's also one of the simple concepts to understand and adhere to.
+
+### Cohesion
+
+Classes Should have a small number of instance variables. Each of the methods of a class should manipulate one or more of those variables. In general the more variables a method manipulates the more cohesive that method is to its class. A class in which each variable is used by each method is maximally cohesive.
+
+### Maintaining Cohesion Results in Many Small Classes
+
+Just the act of breaking large functions into smaller functions causes a proliferation of classes.
+
+## Organizing for change
+For most systems, change is continual. Every change subjects ys to the risk that the remainder of the system no longer works as intended. In a clean system we organize our classes so as to reduce the risk of change.
+
+### Isolating from Change
+Needs will change, therefore code will change. We learned in OO 101 that there are concrete classes, which contain implementation details (code), and abstract classes, which represent concepts only. A client class depending upon concrete details is at risk when those details change. We can introduce intefaces and abstract classes to help isolate the impact of those details.
