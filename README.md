@@ -12,6 +12,11 @@
 * [Chapter 9 -  Unit Tests](#chapter9)
 * [Chapter 10 -  Classes](#chapter10)
 * [Chapter 11 -  Systems](#chapter11)
+* [Chapter 12 -  Systems](#chapter12)
+* [Chapter 13 -  Concurrency](#chapter13)
+* [Chapter 14 -  Successive Refinement](#chapter14)
+* [Chapter 15 -  JUnit Internals](#chapter15)
+* [Chapter 16 -  Refactoring SerialDate](#chapter15)
 
 
 <a name="chapter1">
@@ -1103,4 +1108,61 @@ The Abstract Factory Pattern is an option for this kind of approach.
 
 ### Dependency Injection
 
-A powerful mechanism for separating construction from use is Dependency Injection (DI), the application of Inversion of control (IoC) to dependency management. Inversion of control moves secondary responsibilities from an object to other objects that are dedicated to the purpose, thereby supporting the Single Responsibility Principle. In context of dependency management, an object should not take responsibility for instantiating dependencies itself. Instead, it, should pass this responsibility to another "authoritative" mechanism, thereby inverting the control. Because setup is a global concern, this authoritative mechanism will usually be either the "main" routine or a special-purpose *container*. 
+A powerful mechanism for separating construction from use is Dependency Injection (DI), the application of Inversion of control (IoC) to dependency management. Inversion of control moves secondary responsibilities from an object to other objects that are dedicated to the purpose, thereby supporting the Single Responsibility Principle. In context of dependency management, an object should not take responsibility for instantiating dependencies itself. Instead, it, should pass this responsibility to another "authoritative" mechanism, thereby inverting the control. Because setup is a global concern, this authoritative mechanism will usually be either the "main" 
+routine or a special-purpose *container*. 
+
+<a name="chapter12">
+<h1>Chapter 12 -  Emergence</h1>
+</a>
+
+According to Kent Beck, a design is "simple" if it follows these rules
+
+- Run all tests
+- Contains no duplication
+- Expresses the intent of programmers
+- Minimizes the number of classes and methods
+
+
+<a name="chapter13">
+<h1>Chapter 13 -  Concurrency</h1>
+</a>
+
+Concurrence is a decoupling strategy. It helps us decouple what gets fone from when it gets done. In single-threaded applications what and when are so strongly coupled that the state of the entire application can often be determined by looking at the stack backtrace. A programmer who debugs such a system can set a breakpoint, or a sequence of breakpoints, and know the state of the system by which breakpoints are hit.
+
+Decoupling what from when can dramatically improve both the throughput and structures of an application. From a structural point of view the application looks like many lit- tle collaborating computers rather than one big main loop. This can make the system easier to understand and offers some powerful ways to separate concerns.
+
+## Miths and Misconceptions
+- Concurrency always improves performance.
+Concurrency can sometimes improve performance, but only when there is a lot of wait time that can be shared between multiple threads or multiple processors. Neither situ- ation is trivial.
+- Design does not change when writing concurrent programs.
+In fact, the design of a concurrent algorithm can be remarkably different from the design of a single-threaded system. The decoupling of what from when usually has a huge effect on the structure of the system.
+- Understanding concurrency issues is not important when working with a container such as a Web or EJB container.
+In fact, you’d better know just what your container is doing and how to guard against the issues of concurrent update and deadlock described later in this chapter.
+Here are a few more balanced sound bites regarding writing concurrent software:
+- Concurrency incurs some overhead, both in performance as well as writing additional code.
+- Correct concurrency is complex, even for simple problems.
+- Concurrency bugs aren’t usually repeatable, so they are often ignored as one-offs instead of the true defects they are.
+- Concurrency often requires a fundamental change in design strategy.
+
+# 
+<a name="chapter14">
+<h1>Chapter 14 -  Successive Refinement</h1>
+</a>
+This chapter is a study case. It's recommendable to completely read it to understand more.
+
+
+<a name="chapter15">
+<h1>Chapter 15 -  JUnit Internals</h1>
+</a>
+This chapter analize the JUnit tool. It's recommendable to completely read it to understand more.
+
+
+<a name="chapter16">
+<h1>Chapter 16 -  Refactoring SerialDate</h1>
+</a>
+This chapter is a study case. It's recommendable to completely read it to understand more.
+
+<a name="chapter17">
+<h1>Chapter 17 -  Smells and Heuristics</h1>
+</a>
+This chapter can be considered like a recap of the previous chapters. It has a list of good practices about all the elements of the clean code mentioned in the book.
