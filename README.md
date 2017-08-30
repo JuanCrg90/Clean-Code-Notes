@@ -17,6 +17,7 @@
 * [Chapter 14 -  Successive Refinement](#chapter14)
 * [Chapter 15 -  JUnit Internals](#chapter15)
 * [Chapter 16 -  Refactoring SerialDate](#chapter15)
+* [Chapter 17 - Smells and Heuristics](#chapter17)
 
 
 <a name="chapter1">
