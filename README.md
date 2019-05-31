@@ -1250,7 +1250,6 @@ This chapter is a study case. It's recommendable to completely read it to unders
 <a name="chapter17">
 <h1>Chapter 17 -  Smells and Heuristics</h1>
 </a>
-## Clean-Code-Smells-and-Heuristics
 
 A reference of code smells from Martin Fowler's _Refactoring_ and Robert C Martin's _Clean Code_.
 
