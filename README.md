@@ -1172,7 +1172,7 @@ Just the act of breaking large functions into smaller functions causes a prolife
 
 ## Organizing for change
 
-For most systems, change is continual. Every change subjects ys to the risk that the remainder of the system no longer works as intended. In a clean system we organize our classes so as to reduce the risk of change.
+For most systems, change is continual. Every change subjects us to the risk that the remainder of the system no longer works as intended. In a clean system we organize our classes so as to reduce the risk of change.
 
 ### Isolating from Change
 
