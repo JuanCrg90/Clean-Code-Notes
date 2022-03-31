@@ -13,7 +13,7 @@
 - [Chapter 9 - Unit Tests](#chapter9)
 - [Chapter 10 - Classes](#chapter10)
 - [Chapter 11 - Systems](#chapter11)
-- [Chapter 12 - Systems](#chapter12)
+- [Chapter 12 - Emergence](#chapter12)
 - [Chapter 13 - Concurrency](#chapter13)
 - [Chapter 14 - Successive Refinement](#chapter14)
 - [Chapter 15 - JUnit Internals](#chapter15)
