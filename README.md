@@ -49,7 +49,7 @@ Maybe sometime you think in go fast to make the deadline. The only way to go fas
 
 ### What is Clean Code?
 
-Each experimented programmer has his/her own definition of clean code, but something is clear, a clean code is a code that you can read easily. The clean code is code that has been taken care of.
+Each experienced programmer has his/her own definition of clean code, but something is clear, a clean code is a code that you can read easily. The clean code is code that has been taken care of.
 
 In his book Uncle Bob says the next:
 
