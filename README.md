@@ -1425,11 +1425,11 @@ Negative conditionals take more brain power to understand than a positive.
 
 #### G31: Hidden Temporal Couplings
 
-Use arguents that make temporal coupling explicit.
+Use arguments that make temporal coupling explicit.
 
 #### G32: Don’t Be Arbitrary
 
-Your code's sturcture should communicate the reason for its structure.
+Your code's structure should communicate the reason for its structure.
 
 #### G33: Encapsulate Boundary Conditions
 
