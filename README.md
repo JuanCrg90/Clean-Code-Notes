@@ -1505,7 +1505,7 @@ Bugs are rarely alone. When you find one, look nearby for another.
 
 #### T7: Patterns of Failure Are Revealing
 
-Test cases ordered well will reveal patterns of faiure.
+Test cases ordered well will reveal patterns of failure.
 
 #### T8: Test Coverage Patterns Can Be Revealing
 
