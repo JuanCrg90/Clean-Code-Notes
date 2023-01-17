@@ -1471,7 +1471,7 @@ A name's length should relate to its scope.
 
 #### N6: Avoid Encodings
 
-No not encode names with type or scope information.
+Do not encode names with type or scope information.
 
 #### N7: Names Should Describe Side-Effects
 
