@@ -1,5 +1,5 @@
 # Clean Code Notes
-
+-- editing check
 ## Table of contents
 
 - [Chapter 1 - Clean Code](#chapter1)
