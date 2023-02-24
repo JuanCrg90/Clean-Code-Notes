@@ -1114,7 +1114,7 @@ Interesting things happen at boundaries. Change is one of those things. Good sof
 ### The Three Laws of TDD
 
 - **First Law** You may not write production code until you have written a failing unit test.
-- **Second Law** You may not write more of a unit tests than is sufficient to fail, and not comipling is failing.
+- **Second Law** You may not write more of a unit tests than is sufficient to fail, and not compiling is failing.
 - **Third Law** You may not write more production code than is sufficient to pass the currently failing tests.
 
 ### Clean Tests
@@ -1125,7 +1125,7 @@ The readability it's very important to keep clean your tests.
 
 ### One Assert per test
 
-It's recomendable maintain only one asserts per tests, because this helps to maintain each tests easy to understand.
+It's recommendable maintain only one asserts per tests, because this helps to maintain each tests easy to understand.
 
 ### Single concept per Test
 
@@ -1136,7 +1136,7 @@ This rule will help you to keep short functions.
 ### F.I.R.S.T
 
 - **Fast** Test should be fast.
-- **Independient** Test should not depend on each other.
+- **Independent** Test should not depend on each other.
 - **Repeatable** Test Should be repeatable in any environment.
 - **Self-Validating** Test should have a boolean output. either they pass or fail.
 - **Timely** Unit tests should be written just before the production code that makes them pass. If you write tests after the production code, then you may find the production code to be hard to test.
@@ -1176,7 +1176,7 @@ For most systems, change is continual. Every change subjects us to the risk that
 
 ### Isolating from Change
 
-Needs will change, therefore code will change. We learned in OO 101 that there are concrete classes, which contain implementation details (code), and abstract classes, which represent concepts only. A client class depending upon concrete details is at risk when those details change. We can introduce intefaces and abstract classes to help isolate the impact of those details.
+Needs will change, therefore code will change. We learned in OO 101 that there are concrete classes, which contain implementation details (code), and abstract classes, which represent concepts only. A client class depending upon concrete details is at risk when those details change. We can introduce interfaces and abstract classes to help isolate the impact of those details.
 
 <a name="chapter11">
 <h1>Chapter 11 -  Systems</h1>
@@ -1194,7 +1194,7 @@ The Abstract Factory Pattern is an option for this kind of approach.
 
 ### Dependency Injection
 
-A powerful mechanism for separating construction from use is Dependency Injection (DI), the application of Inversion of control (IoC) to dependency management. Inversion of control moves secondary responsibilities from an object to other objects that are dedicated to the purpose, thereby supporting the Single Responsibility Principle. In context of dependency management, an object should not take responsibility for instantiating dependencies itself. Instead, it, should pass this responsibility to another "authoritative" mechanism, thereby inverting the control. Because setup is a global concern, this authoritative mechanism will usually be either the "main"
+A powerful mechanism for separating construction from use is Dependency Injection (DI), the application of Inversion of control (IoC) to dependency management. Inversion of control moves secondary responsibilities from an object to other objects that are dedicated to the purpose, thereby supporting the Single Responsibility Principle. In context of dependency management, an object should not take responsibility for instantiating dependencies itself. Instead, it should pass this responsibility to another "authoritative" mechanism, thereby inverting the control. Because setup is a global concern, this authoritative mechanism will usually be either the "main"
 routine or a special-purpose _container_.
 
 <a name="chapter12">
