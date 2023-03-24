@@ -1182,9 +1182,9 @@ Needs will change, therefore code will change. We learned in OO 101 that there a
 <h1>Chapter 11 -  Systems</h1>
 </a>
 
-## Separe Constructing a System from using It
+## Separate Constructing a System from using It
 
-_Software Systems should separate the startuo process, when the application objects are constructed and the dependencies are "wired" thogether, from the runtime logic that takes over after startup_
+_Software Systems should separate the startup process, when the application objects are constructed and the dependencies are "wired" together, from the runtime logic that takes over after startup_
 
 ### Separation from main
 
@@ -1216,7 +1216,7 @@ Concurrence is a decoupling strategy. It helps us decouple what gets fone from w
 
 Decoupling what from when can dramatically improve both the throughput and structures of an application. From a structural point of view the application looks like many lit- tle collaborating computers rather than one big main loop. This can make the system easier to understand and offers some powerful ways to separate concerns.
 
-## Miths and Misconceptions
+## Myths and Misconceptions
 
 - Concurrency always improves performance.
   Concurrency can sometimes improve performance, but only when there is a lot of wait time that can be shared between multiple threads or multiple processors. Neither situ- ation is trivial.
