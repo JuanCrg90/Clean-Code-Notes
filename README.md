@@ -31,7 +31,7 @@ The code represents the detail of the requirements and the details cannot be ign
 
 - Are you in a rush?
 - Do you try to go "fast"?
-- Don't you have time to do a good job?
+- Do not you have time to do a good job?
 - Are you tired of work in the same program/module?
 - Does your Boss push you to finish soon?
 
