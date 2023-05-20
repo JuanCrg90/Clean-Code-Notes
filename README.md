@@ -23,21 +23,21 @@
 <a name="chapter1">
 <h1>Chapter 1 -  Clean Code</h1>
 </a>
-This Book is about good programming. It's about how to write good code, and how to transform bad code into good code.
+This book is about good programming. It's about how to write good code and how to transform bad code into good code.
 
-The code represents the detail of the requirements and the details cannot be ignored or abstracted. We may create languages that are closer to the requirements. We can create tools that help us parse and assemble those requirements into formal structures. But we will never eliminate necessary precision.
+The code represents the detail of the requirements, and the details cannot be ignored or abstracted. We may create languages that are closer to the requirements. We can create tools that help us parse and assemble those requirements into formal structures. But we will never eliminate necessary precision.
 
 ### Why write bad code?
 
 - Are you in a rush?
 - Do you try to go "fast"?
-- Do not you have time to do a good job?
-- Are you tired of work in the same program/module?
-- Does your Boss push you to finish soon?
+- Do you not have time to do a good job?
+- Are you tired of working on the same program/module?
+- Does your boss push you to finish quickly?
 
 The previous arguments could create a swamp of senseless code.
 
-If you say "I will back to fix it later" you could fall in the [LeBlanc's law](https://en.wikipedia.org/wiki/Talk%3AList_of_eponymous_laws#Proposal_to_add_LeBlanc.27s_law) "Later equals never"
+If you say "I will come back to fix it later," you could fall victim to [LeBlanc's law](https://en.wikipedia.org/wiki/Talk%3AList_of_eponymous_laws#Proposal_to_add_LeBlanc.27s_law): "Later equals never."
 
 You are a professional and the code is your responsibility. Let's analyze the following anecdote:
 
@@ -45,21 +45,21 @@ You are a professional and the code is your responsibility. Let's analyze the fo
 
 So too it is unprofessional for programmers to bend to the will of managers who don’t understand the risks of making messes.
 
-Maybe sometime you think in go fast to make the deadline. The only way to go fast is to keep the code as clean as possible at all times.
+Maybe sometimes you think about going fast to make a deadline. The only way to go fast is to keep the code as clean as possible at all times.
 
 ### What is Clean Code?
 
-Each experienced programmer has his/her own definition of clean code, but something is clear, a clean code is a code that you can read easily. The clean code is code that has been taken care of.
+Each experienced programmer has his/her own definition of clean code, but one thing is clear: clean code is code that you can read easily. Clean code is code that has been taken care of.
 
-In his book Uncle Bob says the next:
+In his book Uncle Bob says the following:
 
 > Consider this book a description of the Object Mentor School of Clean Code. The techniques and teachings within are the way that we practice our art. We are willing to claim that if you follow these teachings, you will enjoy the benefits that we have enjoyed, and you will learn to write code that is clean and professional. But don’t make the mistake of thinking that we are somehow “right” in any absolute sense. There are other schools and other masters that have just as much claim to professionalism as we. It would behoove you to learn from them as well.
 
-### The boy Scout Rule
+### The Boy Scout Rule
 
 It’s not enough to write the code well. The code has to be kept clean over time. We have all seen code rot and degrade as time passes. So we must take an active role in preventing this degradation.
 
-It's a good practice apply the [Boy Scout Rule](http://programmer.97things.oreilly.com/wiki/index.php/The_Boy_Scout_Rule)
+It's a good practice apply the [Boy Scout Rule](http://programmer.97things.oreilly.com/wiki/index.php/The_Boy_Scout_Rule):
 
 > Always leave the campground cleaner than you found it.
 
@@ -67,26 +67,26 @@ It's a good practice apply the [Boy Scout Rule](http://programmer.97things.oreil
 <h1>Chapter 2 -  Meaningful Names</h1>
 </a>
 
-Names are everywhere in software. Files, directories, variables functions, etc. Because we do so much of it. We have better do it well.
+Names are everywhere in software. Files, directories, variables functions, etc. Because we do so much of it, we better do it well.
 
 ### Use Intention-Revealing Names
 
-It is easy to say that names reveal intent. Choosing good names takes time, but saves more than it takes. So take care with your names and change them when you find better ones.
+It is easy to say that names reveal intent. Choosing good names takes time, but saves more than it takes. So, take care with your names and change them when you find better ones.
 
-The name of a variable, function or class, should answer all the big questions. It should tell you why it exists, what it does, and how is used. **If a name requires a comment, then the name does not reveals its intent**.
+The name of a variable, function or class, should answer all the big questions. It should tell you why it exists, what it does, and how it is used. **If a name requires a comment, then the name does not reveal its intent.**
 
-| Does not reveals intention       | Reveals intention       |
+| Does not reveal intent       	| Reveals intent      	|
 | -------------------------------- | ----------------------- |
 | `int d; // elapsed time in days` | `int elapsedTimeInDays` |
 
-Choosing names that reveal intent can make much easier to understand and change code. Example:
+Choosing names that reveal intent can make it much easier to understand and change code. Example:
 
 ```java
 public List<int[]> getThem() {
   List<int[]> list1 = new ArrayList<int[]>();
   for (int[] x : theList)
-    if (x[0] == 4)
-      list1.add(x);
+	if (x[0] == 4)
+  	list1.add(x);
   return list1;
 }
 ```
@@ -94,23 +94,23 @@ public List<int[]> getThem() {
 This code is simple, but create many questions:
 
 1. What is the content of `theList`?
-2. What is the significance of the item `x[0]` in the list?.
-3. Why we compare `x[0]` vs `4`?
-4. How would i use the returned list?
+2. What is the significance of the item `x[0]` in the list?
+3. Why do we compare `x[0]` against `4`?
+4. How would I use the returned list?
 
-The answers to these questions are not present in the code sample, but they could have been. Say that we’re working in a mine sweeper game. We can refactor the previous code as follows:
+The answers to these questions are not present in the code sample, but they could have been. Say that we’re working in a Minesweeper game. We can refactor the previous code as follows:
 
 ```java
 public List<int[]> getFlaggedCells() {
   List<int[]> flaggedCells = new ArrayList<int[]>();
   for (int[] cell : gameBoard)
-    if (cell[STATUS_VALUE] == FLAGGED)
-      flaggedCells.add(cell);
+	if (cell[STATUS_VALUE] == FLAGGED)
+  	flaggedCells.add(cell);
   return flaggedCells;
 }
 ```
 
-Now we know the next information:
+Now we know the following information:
 
 1. `theList` represents the `gameBoard`
 2. `x[0]` represents a cell in the board and `4` represents a flagged cell
@@ -118,36 +118,36 @@ Now we know the next information:
 
 Notice that the simplicity of the code has not changed. It still has exactly the same number of operators and constants, with exactly the same number of nesting levels. But the code has become much more explicit.
 
-We can improve the code writing a simple class for cells instead of using an array of `ints`. It can include an **intention-revealing function** (called it `isFlagged`) to hide the magic numbers. It results in a new function of the function.
+We can improve the code by writing a simple class for cells instead of using an array of `ints`. It can include an **intention-revealing function** (call it `isFlagged`) to hide the magic numbers. It results in a new function.
 
 ```java
 public List<Cell> getFlaggedCells() {
   List<Cell> flaggedCells = new ArrayList<Cell>();
   for (Cell cell : gameBoard)
-    if (cell.isFlagged())
-      flaggedCells.add(cell);
+	if (cell.isFlagged())
+  	flaggedCells.add(cell);
   return flaggedCells;
 }
 ```
 
 ### Avoid Disinformation
 
-Programmers must avoid leaving false clues that obscure the meaning of code. We should avoid words whose entrenched meaning vary from our intended meaning.
+Programmers must avoid leaving false clues that obscure the meaning of code. We should avoid words whose entrenched meanings vary from our intended meaning.
 
-Do not refer to a grouping of accounts as an `accountList` unless it's actually a `List`. The word `List` means something specific to programmers. If the container holding the accounts is not actually a List, it may lead to false conclusions. So `accountGroup` or `bunchOfAccounts` or just plain `accounts` would be better.
+Do not refer to a grouping of accounts as an `accountList` unless it's actually a `List`. The word `List` means something specific to programmers. If the container holding the accounts is not actually a List, it may lead to false conclusions. So, `accountGroup` or `bunchOfAccounts` or just plain `accounts` would be better.
 
-Beware of using names which vary in small ways. How long does it take to spot the subtle difference between a `XYZControllerForEfficientHandlingOfStrings` in one module and, somewhere a little more distant, `XYZControllerForEfficientStorageOfStrings`? The words have frightfully similar shapes
+Beware of using names which vary in small ways. How long does it take to spot the subtle difference between a `XYZControllerForEfficientHandlingOfStrings` in one module and, in somewhere a little more distant, `XYZControllerForEfficientStorageOfStrings`? The words have frightfully similar shapes
 
 ### Make Meaningful Distinctions
 
-Programmers create problems for themselves when they write code solely to satisfy a compiler or interpreter. For example because you can't use the same name to refer two different things in the same scope, you might be tempted to change one name in an arbitrary way. Sometimes this is done by misspelling one, leading to the surprising situation where correcting spelling errors leads to an inability to compile. Example, you create the variable `klass`because the name `class` was used for something else.
+Programmers create problems for themselves when they write code solely to satisfy a compiler or interpreter. For example, because you can't use the same name to refer to two different things in the same scope, you might be tempted to change one name in an arbitrary way. Sometimes this is done by misspelling one, leading to the surprising situation where correcting spelling errors leads to an inability to compile. Example, you create the variable `klass` because the name `class` was used for something else.
 
-In the next function, the arguments are noninformative, `a1` and `a2` doesn't provide clues to the author intention.
+In the next function, the arguments are noninformative; `a1` and `a2` don't provide clues to the author's intention.
 
 ```java
 public static void copyChars(char a1[], char a2[]) {
   for (int i = 0; i < a1.length; i++) {
-    a2[i] = a1[i];
+	a2[i] = a1[i];
   }
 }
 ```
@@ -157,18 +157,18 @@ We can improve the code selecting more explicit argument names:
 ```java
 public static void copyChars(char source[], char destination[]) {
   for (int i = 0; i < source.length; i++) {
-    destination[i] = source[i];
+	destination[i] = source[i];
   }
 }
 ```
 
-Noise words are another meaningless distinction. Imagine that you have a Product class. If you have another called `ProductInfo` or `ProductData`, you have made the names different without making them mean anything different. Info and Data are indistinct noise words like a, an, and the.
+Noise words are another meaningless distinction. Imagine that you have a Product class. If you have another called `ProductInfo` or `ProductData`, you have made the names different without making them mean anything different. *Info* and *Data* are indistinct noise words like *a*, *an*, and *the*.
 
-Noise words are redundant. The word variable should never appear in a variable name. The word table should never appear in a table name.
+Noise words are redundant. The word *variable* should never appear in a variable name. The word *table* should never appear in a table name.
 
 ### Use Pronounceable Names
 
-Imagine you have the variable `genymdhms` (Generation date, year, month, day, hour, minute and second) and imagine a conversation where you need talk about this variable calling it "gen why emm dee aich emm ess". You can consider convert a class like this:
+Imagine you have the variable `genymdhms` (Generation date, year, month, day, hour, minute, and second) and imagine a conversation where you need talk about this variable calling it "gen why emm dee aich emm ess." You can consider converting a class like this:
 
 ```java
 class DtaRcrd102 {
@@ -179,7 +179,7 @@ class DtaRcrd102 {
 };
 ```
 
-To
+into
 
 ```java
 class Customer {
@@ -196,11 +196,11 @@ Single-letter names and numeric constants have a particular problem in that they
 
 ### Avoid Encoding
 
-We have enough encodings to deal with without adding more to our burden. Encoding type or scope information into names simply adds an extra burden of deciphering. Encoded names are seldom pronounceable and are easy to mis-type. An example of this, is the use of the [Hungarian Notation](https://en.wikipedia.org/wiki/Hungarian_notation) or the use of member prefixes.
+We have enough encodings to deal with without adding more to our burden. Encoding type or scope information into names simply adds an extra burden of deciphering. Encoded names are seldom pronounceable and are easy to mistype. An example of this, is the use of the [Hungarian Notation](https://en.wikipedia.org/wiki/Hungarian_notation) or the use of member prefixes.
 
 #### Interfaces and Implementations
 
-These are sometimes a special case for encodings. For example, say you are building an ABSTRACT FACTORY for the creation of shapes. This factory will be an interface and will be implemented by a concrete class. What should you name them? `IShapeFactory` and `ShapeFactory`? Is preferable to leave interfaces unadorned.I don’t want my users knowing that I’m handing them an interface. I just want them to know that it’s a `ShapeFactory`. So if I must encode either the interface or the implementation, I choose the implementation. Calling it `ShapeFactoryImp`, or even the hideous `CShapeFactory`, is preferable to encoding the interface.
+These are sometimes a special case for encodings. For example, say you are building an [ABSTRACT FACTORY](https://en.wikipedia.org/wiki/Abstract_factory_pattern) for the creation of shapes. This factory will be an interface and will be implemented by a concrete class. What should you name them? `IShapeFactory` and `ShapeFactory`? It is preferable to leave interfaces unadorned. I don’t want my users knowing that I’m handing them an interface. I just want them to know that it’s a `ShapeFactory`. So if I must encode either the interface or the implementation, I choose the implementation. Calling it `ShapeFactoryImp` or even the hideous `CShapeFactory` is preferable to encoding the interface.
 
 ### Avoid Mental Mapping
 
@@ -214,7 +214,7 @@ Classes and objects should have noun or noun phrase names like `Customer`, `Wiki
 
 ### Method Names
 
-Methods should have verb or verb phrase names like `postPayment`, `deletePage` or `save`. Accessors, mutators, and predicates should be named for their value and prefixed with get, set, and is according to the javabean standard.
+Methods should have verb or verb phrase names like `postPayment`, `deletePage` or `save`. Accessors, mutators, and predicates should be named for their value and prefixed with get, set, and is according to the JavaBean standard.
 
 When constructors are overloaded, use static factory methods with names that describe the arguments. For example:
 
@@ -222,7 +222,7 @@ When constructors are overloaded, use static factory methods with names that des
 Complex fulcrumPoint = Complex.FromRealNumber(23.0);
 ```
 
-Is generally better than
+is generally better than
 
 ```java
 Complex fulcrumPoint = new Complex(23.0);
@@ -232,21 +232,21 @@ Consider enforcing their use by making the corresponding constructors private.
 
 ### Don't Be Cute
 
-| Cute name         | Clean name    |
+| Cute name     	| Clean name	|
 | ----------------- | ------------- |
-| `holyHandGranade` | `deleteItems` |
-| `whack`           | `kill`        |
-| `eatMyShorts`     | `abort`       |
+| `holyHandGrenade` | `deleteItems` |
+| `whack`       	| `kill`    	|
+| `eatMyShorts` 	| `abort`   	|
 
 ### Pick one word per concept
 
-Pick one word for one abstract concept and stick with it. For instance, it’s confusing to have fetch, retrieve, and get as equivalent methods of different classes.
+Pick one word for one abstract concept and stick with it. For instance, it’s confusing to have `fetch`, `retrieve`, and `get` as equivalent methods of different classes.
 
 ### Don’t Pun
 
 Avoid using the same word for two purposes. Using the same term for two different ideas is essentially a pun.
 
-Example: in a class use `add` for create a new value by adding or concatenating two existing values and in another class use `add` for put a simple parameter in a collection, it's a better options use a name like `insert` or `append` instead.
+Example: Using `add` in one class for creating a new value by adding or concatenating two existing values and using `add` in another class for putting a simple parameter in a collection—it's better to use a name like `insert` or `append` instead.
 
 ### Use Solution Domain Names
 
@@ -256,11 +256,11 @@ Remember that the people who read your code will be programmers. So go ahead and
 
 When there is no “programmer-eese” for what you’re doing, use the name from the problem domain. At least the programmer who maintains your code can ask a domain expert what it means.
 
-### Add Meaningful context
+### Add Meaningful Context
 
-There are a few names which are meaningful in and of themselves—most are not. Instead, you need to place names in context for your reader by enclosing them in well-named classes, functions, or namespaces. When all else fails, then prefixing the name may be necessary as a last resort
+There are a few names which are meaningful in and of themselves—most are not. Instead, you need to place names in context for your reader by enclosing them in well-named classes, functions, or namespaces. When all else fails, then prefixing the name may be necessary as a last resort.
 
-Variables like: `firstName`, `lastName`, `street`, `city`, `state`. Taken together it's pretty clear that they form an address, but, what if you saw the variable state being used alone in a method?, you could add context using prefixes like: `addrState` at least readers will understand that the variable is part of a large structure. Of course, a better solution is to create a class named `Address` then even the compiler knows that the variables belong to a bigger concept
+Think of variables like `firstName`, `lastName`, `street`, `city`, `state`. Taken together it's pretty clear that they form an address, but what if you saw the variable `state` being used alone in a method? You could add context using prefixes like `addrState` at least readers will understand that the variable is part of a larger structure. Of course, a better solution is to create a class named `Address`—then even the compiler knows that the variables belong to a bigger concept.
 
 ### Don’t Add Gratuitous Context
 
@@ -280,7 +280,7 @@ The first rule of functions is that they should be small. The second rule of fun
 
 #### Blocks and Indenting
 
-This implies that the blocks within `if` statements, `else` statements, `while` statements, and so on should be one line long. Probably that line should be a function call. Not only does this keep the enclosing function small, but also adds documentary value because the function called within the block can have a nicely descriptive name.
+This implies that the blocks within `if` statements, `else` statements, `while` statements, and so on should be one line long. That line should probably be a function call. Not only does this keep the enclosing function small, but also adds documentary value because the function called within the block can have a nicely descriptive name.
 
 This also implies that functions should not be large enough to hold nested structures. Therefore, the indent level of a function should not be greater than one or two. This, of course, makes the functions easy to read and understand.
 
@@ -290,22 +290,22 @@ This also implies that functions should not be large enough to hold nested struc
 
 #### Sections within Functions
 
-If you have a function divided in sections like _declarations_, _initialization_ etc, it's a obvious symptom of the function is doing more than one thing. Functions that do one thing cannot be reasonably divided into sections.
+If you have a function divided in sections like _declarations_, _initialization_ etc, it's an obvious symptom that the function is doing more than one thing. Functions that do one thing cannot be reasonably divided into sections.
 
 ### One Level of Abstraction per Function
 
-In order to make sure our functions are doing "one thing", we need to make sure that the statements within our function are all at the same level of abstraction.
+In order to make sure our functions are doing "one thing," we need to make sure that the statements within our function are all at the same level of abstraction.
 
 #### Reading Code from Top to Bottom: _The Stepdown Rule_
 
-We want the code to read like a top-down narrative. 5 We want every function to be followed by those at the next level of abstraction so that we can read the program, descending one level of abstraction at a time as we read down the list of functions.
+We want the code to read like a top-down narrative. We want every function to be followed by those at the next level of abstraction so that we can read the program, descending one level of abstraction at a time as we read down the list of functions.
 
 To say this differently, we want to be able to read the program as though it were a set
 of TO paragraphs, each of which is describing the current level of abstraction and referencing subsequent TO paragraphs at the next level down.
 
 ```
 - To include the setups and teardowns, we include setups, then we include the test page content, and then we include the teardowns.
-- To include the setups, we include the suite setup if this is a suite, then we include the regular setup.
+- To include the setups, we include the suite setup. If this is a suite, then we include the regular setup.
 - To include the suite setup, we search the parent hierarchy for the “SuiteSetUp” page and add an include statement with the path of that page.
 - To search the parent...
 ```
@@ -314,13 +314,13 @@ It turns out to be very difficult for programmers to learn to follow this rule a
 
 ### Switch Statements
 
-It’s hard to make a small switch statement. 6 Even a switch statement with only two cases is larger than I’d like a single block or function to be. It’s also hard to make a switch statement that does one thing. By their nature, switch statements always do N things. Unfortunately we can’t always avoid switch statements, but we can make sure that each switch statement is buried in a low-level class and is never repeated. We do this, of course, with polymorphism.
+It’s hard to make a small switch statement. Even a switch statement with only two cases is larger than I’d like a single block or function to be. It’s also hard to make a switch statement that does one thing. By their nature, switch statements always do N things. Unfortunately we can’t always avoid switch statements, but we can make sure that each switch statement is buried in a low-level class and is never repeated. We do this, of course, with polymorphism.
 
 ### Use Descriptive Names
 
-> You know you are working on clean code when each routine turns out to be pretty much what you expected
+> You know you are working on clean code when each routine turns out to be pretty much what you expected.
 
-Half the battle to achieving that principle is choosing good names for small functions that do one thing. The smaller and more focused a function is, the easier it is to choose a descriptive name.
+Half the battle in achieving that principle is choosing good names for small functions that do one thing. The smaller and more focused a function is, the easier it is to choose a descriptive name.
 
 Don’t be afraid to make a name long. A long descriptive name is better than a short enigmatic name. A long descriptive name is better than a long descriptive comment. Use a naming convention that allows multiple words to be easily read in the function names, and then make use of those multiple words to give the function a name that says what it does.
 
@@ -332,25 +332,25 @@ The ideal number of arguments for a function is zero (niladic). Next comes one (
 
 Arguments are even harder from a testing point of view. Imagine the difficulty of writing all the test cases to ensure that all the various combinations of arguments work properly. If there are no arguments, this is trivial. If there’s one argument, it’s not too hard. With two arguments the problem gets a bit more challenging. With more than two arguments, testing every combination of appropriate values can be daunting.
 
-Output arguments are harder to understand than input arguments. When we read a function, we are used to the idea of information going in to the function through arguments and out through the return value. We don’t usually expect information to be going out through the arguments. So output arguments often cause us to do a double-take.
+Output arguments are harder to understand than input arguments. When we read a function, we are used to the idea of information going into the function through arguments and out through the return value. We don’t usually expect information to be going out through the arguments. So output arguments often cause us to do a double-take.
 
 #### Common Monadic Forms
 
-There are two very common reasons to pass a single argument into a function. You may be asking a question about that argument, as in `boolean fileExists(“MyFile”)` . Or you may be operating on that argument, transforming it into something else and returning it. For example, `InputStream fileOpen(“MyFile”)` transforms a file name `String` into an `InputStream` return value. These two uses are what readers expect when they see a function. You should choose names that make the distinction clear, and always use the two forms in a consistent context.
+There are two very common reasons to pass a single argument into a function. You may be asking a question about that argument, as in `boolean fileExists(“MyFile”)`. Or you may be operating on that argument, transforming it into something else and returning it. For example, `InputStream fileOpen(“MyFile”)` transforms a file name `String` into an `InputStream` return value. These two uses are what readers expect when they see a function. You should choose names that make the distinction clear, and always use the two forms in a consistent context.
 
 #### Flag Arguments
 
-Flag arguments are ugly. Passing a boolean into a function is a truly terrible practice. It immediately complicates the signature of the method, loudly proclaiming that this function does more than one thing. It does one thing if the flag is `true` and another if the flag is `false`!
+Flag arguments are ugly. Passing a boolean into a function is a truly terrible practice. It immediately complicates the signature of the method, loudly proclaiming that this function does more than one thing. It does one thing if the flag is `true` and another if the flag is `false`! To remedy this, create a separate function for each case.
 
 #### Dyadic Functions
 
-A function with two arguments is harder to understand than a monadic function. For example, `writeField(name)` is easier to understand than `writeField(output-Stream, name)`
+A function with two arguments is harder to understand than a monadic function. For example, `writeField(name)` is easier to understand than `writeField(outputStream, name)`
 
 There are times, of course, where two arguments are appropriate. For example, `Point p = new Point(0,0);` is perfectly reasonable. Cartesian points naturally take two arguments.
 
-Even obvious dyadic functions like assertEquals(expected, actual) are problematic. How many times have you put the actual where the expected should be? The two arguments have no natural ordering. The expected, actual ordering is a convention that requires practice to learn.
+Even obvious dyadic functions like `assertEquals(expected, actual)` are problematic. How many times have you put the actual where the expected should be? The two arguments have no natural ordering. The expected-actual ordering is a convention that requires practice to learn.
 
-Dyads aren’t evil, and you will certainly have to write them. However, you should be aware that they come at a cost and should take advantage of what mechanims may be available to you to convert them into monads. For example, you might make the writeField method a member of outputStream so that you can say outputStream. writeField(name) . Or you might make the outputStream a member variable of the current class so that you don’t have to pass it. Or you might extract a new class like FieldWriter that takes the outputStream in its constructor and has a write method.
+Dyads aren’t evil, and you will certainly have to write them. However, you should be aware that they come at a cost and should take advantage of what mechanisms may be available to you to convert them into monads. For example, you might make the writeField method a member of `outputStream` so that you can say `outputStream.writeField(name)`. Or you might make the `outputStream` a member variable of the current class so that you don’t have to pass it. Or you might extract a new class like `FieldWriter` that takes the `outputStream` in its constructor and has a `write` method.
 
 #### Triads
 
@@ -378,7 +378,7 @@ This last is an example of the keyword form of a function name. Using this form 
 
 ### Output Arguments
 
-In general output arguments should be avoided. If your function must change the state of something, have it change the state of its owning object.
+In general, output arguments should be avoided. If your function must change the state of something, have it change the state of its owning object.
 
 ### Command Query Separation
 
@@ -453,10 +453,10 @@ public int compareTo(Object o)
 {
   if(o instanceof WikiPagePath)
   {
-    WikiPagePath p = (WikiPagePath) o;
-    String compressedName = StringUtil.join(names, "");
-    String compressedArgumentName = StringUtil.join(p.names, "");
-    return compressedName.compareTo(compressedArgumentName);
+	WikiPagePath p = (WikiPagePath) o;
+	String compressedName = StringUtil.join(names, "");
+	String compressedArgumentName = StringUtil.join(p.names, "");
+	return compressedName.compareTo(compressedArgumentName);
   }
   return 1; // we are greater because we are the right type.
 }
@@ -464,9 +464,9 @@ public int compareTo(Object o)
 
 #### Clarification
 
-Sometimes it is just helpful to translate the meaning of some obscure argument or return value into something that's readable. In general it is better to find a way to make that argument or return value clear in its own right; but when its part of the standard library, or in code that you cannot alter, then a helpful clarifying comment can be useful.
+Sometimes it is just helpful to translate the meaning of some obscure argument or return value into something that's readable. In general it is better to find a way to make that argument or return value clear in its own right; but when it's part of the standard library, or in code that you cannot alter, then a helpful clarifying comment can be useful.
 
-#### Warning of concequences
+#### Warning of consequences
 
 Sometimes it is useful to warn other programmers about certain consequences.
 
@@ -485,7 +485,7 @@ public void _testWithReallyBigFile() {
 
 #### TODO Comments
 
-It is sometimes reasonable to leave “To do” notes in the form of //TODO comments. In the
+It is sometimes reasonable to leave “To do” notes in the form of `//TODO` comments. In the
 following case, the TODO comment explains why the function has a degenerate implementation and what that function's future should be.
 
 ```java
@@ -504,7 +504,7 @@ A comment may be used to amplify the importance of something that may otherwise 
 
 ```java
 String listItemContent = match.group(3).trim();
-// the trim is real important. It removes the starting
+// the trim is really important. It removes the starting
 // spaces that could cause the item to be recognized
 // as another list.
 new ListItemWidget(this, listItemContent, this.level + 1);
@@ -513,7 +513,7 @@ return buildList(text.substring(match.end()));
 
 #### Javadocs in Public APIs
 
-There is nothing quite so helpful and satisfying as a well-described public API. The javadocs for the standard Java library are a case in point. It would be difficult, at best, to write Java programs without them.
+There is nothing quite so helpful and satisfying as a well-described public API. The Javadocs for the standard Java library are a case in point. It would be difficult, at best, to write Java programs without them.
 
 ### Bad Comments
 
@@ -521,23 +521,23 @@ Most comments fall into this category. Usually they are crutches or excuses for 
 
 #### Mumbling
 
-Plopping in a comment just because you feel you should or because the process requires it, is a hack. If you decide to write a comment, then spend the time necessary to make sure it is the best comment you can write. Example:
+Plopping in a comment, just because you feel you should or because the process requires it, is a hack. If you decide to write a comment, then spend the time necessary to make sure it is the best comment you can write. Example:
 
 ```java
 public void loadProperties() {
 
   try {
-    String propertiesPath = propertiesLocation + "/" + PROPERTIES_FILE;
-    FileInputStream propertiesStream = new FileInputStream(propertiesPath);
-    loadedProperties.load(propertiesStream);
+	String propertiesPath = propertiesLocation + "/" + PROPERTIES_FILE;
+	FileInputStream propertiesStream = new FileInputStream(propertiesPath);
+	loadedProperties.load(propertiesStream);
   }
   catch(IOException e) {
-    // No properties files means all defaults are loaded
+	// No properties files means all defaults are loaded
   }
 }
 ```
 
-What does that comment in the catch block mean? Clearly meant something to the author, but the meaning not come though all that well. Apparently, if we get an `IOException`, it means that there was no properties file; and in that case all the defaults are loaded. But who loads all the defaults?
+What does that comment in the catch block mean? Clearly meant something to the author, but the meaning does not come through all that well. Apparently, if we get an `IOException`, it means that there was no properties file, and in that case all the defaults are loaded. But who loads all the defaults?
 
 #### Redundant Comments
 
@@ -546,9 +546,9 @@ What does that comment in the catch block mean? Clearly meant something to the a
 // if the timeout is reached.
 public synchronized void waitForClose(final long timeoutMillis) throws Exception {
   if(!closed) {
-    wait(timeoutMillis);
-    if(!closed)
-      throw new Exception("MockResponseSender could not be closed");
+	wait(timeoutMillis);
+	if(!closed)
+  	throw new Exception("MockResponseSender could not be closed");
   }
 }
 ```
@@ -561,7 +561,7 @@ Sometimes, with all the best intentions, a programmer makes a statement in his c
 
 #### Mandated Comments
 
-It is just plain silly to have a rule that says that every function must have a javadoc, or every variable must have a comment. Comments like this just clutter up the code, propagate lies, and lend to general confusion and disorganization.
+It is just plain silly to have a rule that says that every function must have a Javadoc or that every variable must have a comment. Comments like this just clutter up the code, propagate lies, and lend to general confusion and disorganization.
 
 ```java
 /**
@@ -599,7 +599,7 @@ Today we have source code control systems, we don't need this type of logs.
 
 #### Noise Comments
 
-The comments in the follow examples doesn't provides new information.
+The comments in the following examples don't provide new information.
 
 ```java
 /**
@@ -636,7 +636,7 @@ if (moduleDependees.contains(ourSubSystem))
 
 #### Position Markers
 
-This type of comments are noising
+This type of comments are noisy.
 
 ```java
 // Actions //////////////////////////////////
@@ -649,33 +649,33 @@ Example:
 ```java
 public class wc {
   public static void main(String[] args) {
-    BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-    String line;
-    int lineCount = 0;
-    int charCount = 0;
-    int wordCount = 0;
-    try {
-      while ((line = in.readLine()) != null) {
-        lineCount++;
-        charCount += line.length();
-        String words[] = line.split("\\W");
-        wordCount += words.length;
+	BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+	String line;
+	int lineCount = 0;
+	int charCount = 0;
+	int wordCount = 0;
+	try {
+  	while ((line = in.readLine()) != null) {
+    	lineCount++;
+    	charCount += line.length();
+    	String words[] = line.split("\\W");
+    	wordCount += words.length;
 
-      } //while
-      System.out.println("wordCount = " + wordCount);
-      System.out.println("lineCount = " + lineCount);
-      System.out.println("charCount = " + charCount);
+  	} //while
+  	System.out.println("wordCount = " + wordCount);
+  	System.out.println("lineCount = " + lineCount);
+  	System.out.println("charCount = " + charCount);
 
-    } // try
-    catch (IOException e) {
-      System.err.println("Error:" + e.getMessage());
+	} // try
+	catch (IOException e) {
+  	System.err.println("Error:" + e.getMessage());
 
-    } //catch
+	} //catch
 
   } //main
 ```
 
-You could break the code in small functions instead to use this type of comments.
+You could break the code in small functions instead of using this type of comments.
 
 #### Attributions and Bylines
 
@@ -695,7 +695,7 @@ response.setBody(formatter.getResultStream(), formatter.getByteCount());
 // response.setContent(reader.read(formatter.getByteCount()));
 ```
 
-If you don't need anymore, please delete it, you can back later with your VCS if you need it again.
+If you don't need it anymore, please delete it, you can come back later with your VCS if you need it again.
 
 #### HTML Comments
 
@@ -727,15 +727,15 @@ HTML in source code comments is an abomination, as you can tell by reading the c
 
 #### Nonlocal Information
 
-If you must write a comment, then make sure it describes the code it appears near. Don't offer systemwide information in the context of a local comment.
+If you must write a comment, then make sure it describes the code it appears near. Don't offer system wide information in the context of a local comment.
 
 #### Too Much Information
 
 Don't put interesting historical discussions or irrelevant descriptions of details into your comments.
 
-#### Inobvious Connection
+#### Unobvious Connection
 
-The connection between a comment and the code it describes should be obvious. If you are going to the trouble to write a comment, then at least you'd like the reader to be able to look at the comment and the code and understand what the comment is talking about
+The connection between a comment and the code it describes should be obvious. If you are going through the trouble to write a comment, then at least you'd like the reader to be able to look at the comment and the code and understand what the comment is talking about
 
 #### Function Headers
 
@@ -743,7 +743,7 @@ Short functions don’t need much description. A well-chosen name for a small fu
 
 #### Javadocs in Nonpublic Code
 
-Javadocs are for public APIs, in nonpublic code could be a distraction more than a help.
+Javadocs are for public APIs; in nonpublic code, they could be more of a distraction than anything.
 
 <a name="chapter5">
 <h1>Chapter 5 -  Formatting</h1>
@@ -755,7 +755,7 @@ Code formatting is important. It is too important to ignore and it is too import
 
 #### Vertical Openness Between Concepts
 
-This concept consist in how to you separate concepts in your code, In the next example we can appreciate it.
+This concept deals with how to separate concepts in your code. In the next example we can appreciate it.
 
 ```java
 package fitnesse.wikitext.widgets;
@@ -765,20 +765,20 @@ import java.util.regex.*;
 public class BoldWidget extends ParentWidget {
   public static final String REGEXP = "'''.+?'''";
   private static final Pattern pattern = Pattern.compile("'''(.+?)'''",
-      Pattern.MULTILINE + Pattern.DOTALL
-      );
+  	Pattern.MULTILINE + Pattern.DOTALL
+  	);
 
   public BoldWidget(ParentWidget parent, String text) throws Exception {
-    super(parent);
-    Matcher match = pattern.matcher(text);
-    match.find();
-    addChildWidgets(match.group(1));
+	super(parent);
+	Matcher match = pattern.matcher(text);
+	match.find();
+	addChildWidgets(match.group(1));
   }
 
   public String render() throws Exception {
-    StringBuffer html = new StringBuffer("<b>");
-    html.append(childHtml()).append("</b>");
-    return html.toString();
+	StringBuffer html = new StringBuffer("<b>");
+	html.append(childHtml()).append("</b>");
+	return html.toString();
   }
 }
 ```
@@ -791,8 +791,8 @@ public class BoldWidget extends ParentWidget {
   private static final Pattern pattern = Pattern.compile("'''(.+?)'''",
   Pattern.MULTILINE + Pattern.DOTALL);
   public BoldWidget(ParentWidget parent, String text) throws Exception {
-    super(parent);
-    Matcher match = pattern.matcher(text); match.find(); addChildWidgets(match.group(1));
+	super(parent);
+	Matcher match = pattern.matcher(text); match.find(); addChildWidgets(match.group(1));
   }
   public String render() throws Exception { StringBuffer html = new StringBuffer("<b>"); html.append(childHtml()).append("</b>"); return html.toString();
   }
@@ -808,16 +808,16 @@ The vertical density implies close association. So lines of code that are tightl
 ```Java
 public class ReporterConfig {
 
-	/**
-	 * The class name of the reporter listener */
-	private String m_className;
+    /**
+     * The class name of the reporter listener */
+    private String m_className;
 
-	/**
-	 * The properties of the reporter listener */
-	private List<Property> m_properties = new ArrayList<Property>();
+    /**
+     * The properties of the reporter listener */
+    private List<Property> m_properties = new ArrayList<Property>();
 
-	public void addProperty(Property property) { m_properties.add(property);
-	}
+    public void addProperty(Property property) { m_properties.add(property);
+    }
 ```
 
 ```java
@@ -826,7 +826,7 @@ public class ReporterConfig {
   private List<Property> m_properties = new ArrayList<Property>();
 
   public void addProperty(Property property) {
-    m_properties.add(property);
+	m_properties.add(property);
   }
 }
 ```
@@ -872,14 +872,14 @@ Assignment statements have two distinct and major elements: the left side and th
 ```java
 public class Example implements Base
 {
-  private   Socket      socket;
+  private   Socket  	socket;
   private   inputStream input;
-  protected long        requestProgress;
+  protected long    	requestProgress;
 
-  public Expediter(Socket      s,
-                   inputStream input) {
-    this.socket =     s;
-    this.input  =     input;
+  public Expediter(Socket  	s,
+               	inputStream input) {
+	this.socket = 	s;
+	this.input  = 	input;
   }
 }
 ```
@@ -895,8 +895,8 @@ public class Example implements Base
 
   public Expediter(Socket s, inputStream input) {
 
-    this.socket = s;
-    this.input = input;
+	this.socket = s;
+	this.input = input;
   }
 }
 ```
@@ -905,7 +905,7 @@ This is a better approach.
 
 ### Indentation
 
-The indentation it's important because help us to have a visible hierarchy and well defined blocks.
+The indentation is important because it helps us to have a visible hierarchy and well defined blocks.
 
 ### Team Rules
 
@@ -923,7 +923,7 @@ Hiding implementation is not just a matter of putting a layer of functions betwe
 
 ### Data/Object Anti-Symmetry
 
-These two examples show the difference between objects and data structures. Objects hide their data behind abstractions and expose functions that operate on that data. Data structure expose their data and have no meaningful functions.
+These two examples show the difference between objects and data structures. Objects hide their data behind abstractions and expose functions that operate on that data. Data structures expose their data and have no meaningful functions.
 
 **Procedural Shape**
 
@@ -948,17 +948,17 @@ public class Geometry {
   public final double PI = 3.141592653589793;
 
   public double area(Object shape) throws NoSuchShapeException {
-    if (shape instanceof Square) {
-      Square s = (Square)shape;
-      return s.side * s.side;
-    }
-    else if (shape instanceof Rectangle) { Rectangle r = (Rectangle)shape; return r.height * r.width;
-    }
-    else if (shape instanceof Circle) {
-      Circle c = (Circle)shape;
-      return PI * c.radius * c.radius;
-    }
-    throw new NoSuchShapeException();
+	if (shape instanceof Square) {
+  	Square s = (Square)shape;
+  	return s.side * s.side;
+	}
+	else if (shape instanceof Rectangle) { Rectangle r = (Rectangle)shape; return r.height * r.width;
+	}
+	else if (shape instanceof Circle) {
+  	Circle c = (Circle)shape;
+  	return PI * c.radius * c.radius;
+	}
+	throw new NoSuchShapeException();
   }
 }
 ```
@@ -971,7 +971,7 @@ public class Square implements Shape {
   private double side;
 
   public double area() {
-    return side*side;
+	return side*side;
   }
 }
 
@@ -981,7 +981,7 @@ public class Rectangle implements Shape {
   private double width;
 
   public double area() {
-    return height * width;
+	return height * width;
   }
 }
 
@@ -991,12 +991,12 @@ public class Circle implements Shape {
   public final double PI = 3.141592653589793;
 
   public double area() {
-    return PI * radius * radius;
+	return PI * radius * radius;
   }
 }
 ```
 
-Again, we see the complimentary nature of these two definitions; they are virtual opposites! This exposes the fundamental dichotomy between objects and data structures:
+Again, we see the complementary nature of these two definitions; they are virtual opposites! This exposes the fundamental dichotomy between objects and data structures:
 
 > Procedural code (code using data structures) makes it easy to add new functions without changing the existing data structures. OO code, on the other hand, makes it easy to add new classes without changing existing functions.
 
@@ -1063,7 +1063,7 @@ There is a natural tension between the provider of an interface and the user of 
 
 ```java
 Map sensors = new HashMap();
-Sensor s = (Sensor)sensors.get(sensorId);
+Sensor s = (Sensor) sensors.get(sensorId);
 ```
 
 VS
@@ -1073,13 +1073,13 @@ public class Sensors {
   private Map sensors = new HashMap();
 
   public Sensor getById(String id) {
-    return (Sensor) sensors.get(id);
+	return (Sensor) sensors.get(id);
   }
   //snip
 }
 ```
 
-The first code exposes the casting in the Map, while the second is able to evolve with very little impact on the rest of the application. The casting and type management is handled inside the Sensors class.
+The first code exposes the casting in the `Map`, while the second is able to evolve with very little impact on the rest of the application. The casting and type management is handled inside the Sensors class.
 
 The interface is also tailored and constrained to meet the needs of the application. It results in code that is easier to understand and harder to misuse. The Sensors class can enforce design and business rules.
 
@@ -1087,7 +1087,7 @@ The interface is also tailored and constrained to meet the needs of the applicat
 
 Third-party code helps us get more functionality delivered in less time. Where do we start when we want to utilize some third-party package? It’s not our job to test the third-party code, but it may be in our best interest to write tests for the third-party code we use.
 
-It's a good idea write some test for learn and understand how to use a third-party code. Newkirk calls such tests learning tests.
+It's a good idea to write some tests to learn and understand how to use a third-party code. Newkirk calls such tests learning tests.
 
 ### Learning Tests Are Better Than Free
 
@@ -1097,7 +1097,7 @@ Not only are learning tests free, they have a positive return on investment. Whe
 
 ### Using Code That Does Not Yet Exist
 
-Some times it's necessary work in a module that will be connected to another module under develop, and we have no idea about how to send the information, because the API had not been designed yet. In this cases it's recommendable create an interface for encapsulate the communication with the pending module. In this way we maintain the control over our module and we can test although the second module isn't available yet.
+Sometimes it's necessary to work in a module that will be connected to another module under development, and we have no idea about how to send the information because the API has not been designed yet. In this case it's recommended to create an interface to encapsulate the communication with the pending module. In this way we maintain the control over our module and we can test although the second module isn't available yet.
 
 ### Clean Boundaries
 
@@ -1113,19 +1113,19 @@ Interesting things happen at boundaries. Change is one of those things. Good sof
 
 ### The Three Laws of TDD
 
-- **First Law** You may not write production code until you have written a failing unit test.
-- **Second Law** You may not write more of a unit tests than is sufficient to fail, and not comipling is failing.
-- **Third Law** You may not write more production code than is sufficient to pass the currently failing tests.
+- **First Law** You are not allowed to write any production code unless it is to make a failing unit test pass
+- **Second Law** You are not allowed to write any more of a unit test than is sufficient to fail; compilation failures are failures.
+- **Third Law** You are not allowed to write any more production code than is sufficient to pass the one failing unit test.
 
 ### Clean Tests
 
 If you don't keep your tests clean, you will lose them.
 
-The readability it's very important to keep clean your tests.
+For readability it's very important to keep your tests clean.
 
 ### One Assert per test
 
-It's recomendable maintain only one asserts per tests, because this helps to maintain each tests easy to understand.
+It's recommended to maintain only one assert per test because this helps to keep each test easy to understand.
 
 ### Single concept per Test
 
@@ -1133,12 +1133,12 @@ This rule will help you to keep short functions.
 
 - **Write one test per each concept that you need to verify**
 
-### F.I.R.S.T
+### F.I.R.S.T.
 
 - **Fast** Test should be fast.
-- **Independient** Test should not depend on each other.
-- **Repeatable** Test Should be repeatable in any environment.
-- **Self-Validating** Test should have a boolean output. either they pass or fail.
+- **Independent** Tests should not depend on each other.
+- **Repeatable** Tests should be repeatable in any environment.
+- **Self-Validating** Test should have a boolean output. Either they pass or fail.
 - **Timely** Unit tests should be written just before the production code that makes them pass. If you write tests after the production code, then you may find the production code to be hard to test.
 
 <a name="chapter10">
@@ -1149,7 +1149,7 @@ This rule will help you to keep short functions.
 
 ### Encapsulation
 
-We like to keep our variables and utility functions small, but we're not fanatic about it. Sometimes we need to make a variable or utility function protected so that it can be accessed by a test.
+We like to keep our variables and utility functions private, but we're not fanatic about it. Sometimes we need to make a variable or utility function protected so that it can be accessed by a test.
 
 ## Classes Should be Small
 
@@ -1158,17 +1158,17 @@ We like to keep our variables and utility functions small, but we're not fanatic
 
 ### The Single Responsibility Principle
 
-**Classes should have one responsibility - one reason to change**
+**Classes should have one responsibility—one reason to change**
 
-SRP is one of the more important concept in OO design. It's also one of the simple concepts to understand and adhere to.
+SRP is one of the more important concepts in OO design. It's also one of the simplest concepts to understand and adhere to.
 
 ### Cohesion
 
-Classes Should have a small number of instance variables. Each of the methods of a class should manipulate one or more of those variables. In general the more variables a method manipulates the more cohesive that method is to its class. A class in which each variable is used by each method is maximally cohesive.
+Classes should have a small number of instance variables. Each of the methods of a class should manipulate one or more of those variables. In general the more variables a method manipulates the more cohesive that method is to its class. A class in which each variable is used by each method is maximally cohesive.
 
 ### Maintaining Cohesion Results in Many Small Classes
 
-Just the act of breaking large functions into smaller functions causes a proliferation of classes.
+Just the act of breaking large functions into smaller functions causes a proliferation of classes. However, it's easier to understand the one thing a small class does rather than the several things a large class is doing.
 
 ## Organizing for change
 
@@ -1176,25 +1176,25 @@ For most systems, change is continual. Every change subjects us to the risk that
 
 ### Isolating from Change
 
-Needs will change, therefore code will change. We learned in OO 101 that there are concrete classes, which contain implementation details (code), and abstract classes, which represent concepts only. A client class depending upon concrete details is at risk when those details change. We can introduce intefaces and abstract classes to help isolate the impact of those details.
+Needs will change, therefore code will change. We learned in OO 101 that there are concrete classes, which contain implementation details (code), and abstract classes, which represent concepts only. A client class depending upon concrete details is at risk when those details change. We can introduce interfaces and abstract classes to help isolate the impact of those details.
 
 <a name="chapter11">
 <h1>Chapter 11 -  Systems</h1>
 </a>
 
-## Separate Constructing a System from using It
+## Separate Constructing a System from using it
 
 _Software Systems should separate the startup process, when the application objects are constructed and the dependencies are "wired" together, from the runtime logic that takes over after startup_
 
 ### Separation from main
 
-One way to separate construction from use is simply to move all aspects of construction to `main`, or modules called by `main`, and to design the rest of the system assuming that all objects have been created constructed and wired up appropriately.
+One way to separate construction from use is simply to move all aspects of construction to `main`, or modules called by `main`, and to design the rest of the system assuming that all objects have been created, constructed, and wired up appropriately.
 
 The Abstract Factory Pattern is an option for this kind of approach.
 
 ### Dependency Injection
 
-A powerful mechanism for separating construction from use is Dependency Injection (DI), the application of Inversion of control (IoC) to dependency management. Inversion of control moves secondary responsibilities from an object to other objects that are dedicated to the purpose, thereby supporting the Single Responsibility Principle. In context of dependency management, an object should not take responsibility for instantiating dependencies itself. Instead, it, should pass this responsibility to another "authoritative" mechanism, thereby inverting the control. Because setup is a global concern, this authoritative mechanism will usually be either the "main"
+A powerful mechanism for separating construction from use is Dependency Injection (DI), the application of Inversion of control (IoC) to dependency management. Inversion of control moves secondary responsibilities from an object to other objects that are dedicated to the purpose, thereby supporting the Single Responsibility Principle. In the context of dependency management, an object should not take responsibility for instantiating dependencies itself. Instead, it should pass this responsibility to another "authoritative" mechanism, thereby inverting the control. Because setup is a global concern, this authoritative mechanism will usually be either the "main"
 routine or a special-purpose _container_.
 
 <a name="chapter12">
@@ -1203,7 +1203,7 @@ routine or a special-purpose _container_.
 
 According to Kent Beck, a design is "simple" if it follows these rules
 
-- Run all tests
+- Runs all tests
 - Contains no duplication
 - Expresses the intent of programmers
 - Minimizes the number of classes and methods
@@ -1212,46 +1212,46 @@ According to Kent Beck, a design is "simple" if it follows these rules
 <h1>Chapter 13 -  Concurrency</h1>
 </a>
 
-Concurrence is a decoupling strategy. It helps us decouple what gets fone from when it gets done. In single-threaded applications what and when are so strongly coupled that the state of the entire application can often be determined by looking at the stack backtrace. A programmer who debugs such a system can set a breakpoint, or a sequence of breakpoints, and know the state of the system by which breakpoints are hit.
+Concurrence is a decoupling strategy. It helps us decouple _what_ gets done from _when_ it gets done. In single-threaded applications _what_ and _when_ are so strongly coupled that the state of the entire application can often be determined by looking at the stack backtrace. A programmer who debugs such a system can set a breakpoint, or a sequence of breakpoints, and know the state of the system by which breakpoints are hit.
 
-Decoupling what from when can dramatically improve both the throughput and structures of an application. From a structural point of view the application looks like many lit- tle collaborating computers rather than one big main loop. This can make the system easier to understand and offers some powerful ways to separate concerns.
+Decoupling _what_ from _when_ can dramatically improve both the throughput and structures of an application. From a structural point of view the application looks like many little collaborating computers rather than one big main loop. This can make the system easier to understand and offers some powerful ways to separate concerns.
 
 ## Myths and Misconceptions
 
 - Concurrency always improves performance.
-  Concurrency can sometimes improve performance, but only when there is a lot of wait time that can be shared between multiple threads or multiple processors. Neither situ- ation is trivial.
+  Concurrency can sometimes improve performance, but only when there is a lot of wait time that can be shared between multiple threads or multiple processors. Neither situation is trivial.
 - Design does not change when writing concurrent programs.
   In fact, the design of a concurrent algorithm can be remarkably different from the design of a single-threaded system. The decoupling of what from when usually has a huge effect on the structure of the system.
 - Understanding concurrency issues is not important when working with a container such as a Web or EJB container.
   In fact, you’d better know just what your container is doing and how to guard against the issues of concurrent update and deadlock described later in this chapter.
-  Here are a few more balanced sound bites regarding writing concurrent software:
+
+
+Here are a few more balanced sound bites regarding writing concurrent software:
 - Concurrency incurs some overhead, both in performance as well as writing additional code.
 - Correct concurrency is complex, even for simple problems.
 - Concurrency bugs aren’t usually repeatable, so they are often ignored as one-offs instead of the true defects they are.
 - Concurrency often requires a fundamental change in design strategy.
 
-#
-
 <a name="chapter14">
 <h1>Chapter 14 -  Successive Refinement</h1>
 </a>
-This chapter is a study case. It's recommendable to completely read it to understand more.
+This chapter is a study case. It's recommended to completely read it to understand more.
 
 <a name="chapter15">
 <h1>Chapter 15 -  JUnit Internals</h1>
 </a>
-This chapter analize the JUnit tool. It's recommendable to completely read it to understand more.
+This chapter analyzes the JUnit tool. It's recommended to completely read it to understand more.
 
 <a name="chapter16">
-<h1>Chapter 16 -  Refactoring SerialDate</h1>
+<h1>Chapter 16 -  Refactoring `SerialDate`</h1>
 </a>
-This chapter is a study case. It's recommendable to completely read it to understand more.
+This chapter is a study case. It's recommended to completely read it to understand more.
 
 <a name="chapter17">
 <h1>Chapter 17 -  Smells and Heuristics</h1>
 </a>
 
-A reference of code smells from Martin Fowler's _Refactoring_ and Robert C Martin's _Clean Code_.
+A reference of code smells from Martin Fowler's _Refactoring_ and Robert C. Martin's _Clean Code_.
 
 While clean code comes from discipline and not a list or value system, here is a starting point.
 
@@ -1271,7 +1271,7 @@ A redundant comment describes something able to sufficiently describe itself.
 
 #### C4: Poorly Written Comment
 
-Comments should be brief, concise, correctly spelled.
+Comments should be brief, concise, and correctly spelled.
 
 #### C5: Commented-Out Code
 
@@ -1295,7 +1295,7 @@ Functions should have no arguments, then one, then two, then three. No more than
 
 #### F2: Output Arguments
 
-Arguments are inputs, not outputs. If somethings state must be changed, let it be the state of the called object.
+Arguments are inputs, not outputs. If something's state must be changed, let it be the state of the calling object.
 
 #### F3: Flag Arguments
 
@@ -1321,7 +1321,7 @@ Write tests for every boundary condition.
 
 #### G4: Overridden Safeties
 
-Overriding safeties and exerting manual control leads to code melt down.
+Overriding safeties and exerting manual control leads to code meltdown.
 
 #### G5: Duplication
 
@@ -1349,7 +1349,7 @@ Define variables and functions close to where they are called.
 
 #### G11: Inconsistency
 
-Choose a convention, and follow it. Remember no surprises.
+Choose a convention, and follow it. Remember, no surprises.
 
 #### G12: Clutter
 
@@ -1361,7 +1361,7 @@ Favor code that is clear, rather than convenient. Do not group code that favors 
 
 #### G14: Feature Envy
 
-Methods of one class should not be interested with the methods of another class.
+Methods of one class should not be interested in the methods of another class.
 
 #### G15: Selector Arguments
 
@@ -1373,7 +1373,7 @@ Code should not be magic or obscure.
 
 #### G17: Misplaced Responsibility
 
-Use clear function name as waypoints for where to place your code.
+Use clear function names as waypoints for where to place your code.
 
 #### G18: Inappropriate Static
 
@@ -1385,7 +1385,7 @@ Make explanatory variables, and lots of them.
 
 #### G20: Function Names Should Say What They Do
 
-...
+Self-explanatory.
 
 #### G21: Understand the Algorithm
 
@@ -1401,7 +1401,7 @@ Avoid the brute force of switch/case.
 
 #### G24: Follow Standard Conventions
 
-It doesn't matter what your teams convention is. Just that you have on and everyone follows it.
+It doesn't matter what your team's convention is. Just that you have one and everyone follows it.
 
 #### G25: Replace Magic Numbers with Named Constants
 
@@ -1433,7 +1433,7 @@ Your code's structure should communicate the reason for its structure.
 
 #### G33: Encapsulate Boundary Conditions
 
-Avoid leaking +1's and -1's into your code.
+Avoid leaking `+1`s and `-1`s into your code.
 
 #### G34: Functions Should Descend Only One Level of Abstraction
 
@@ -1489,7 +1489,7 @@ Use your IDE as a coverage tool.
 
 #### T3: Don’t Skip Trivial Tests
 
-...
+Self-explanatory.
 
 #### T4: An Ignored Test is a Question about an Ambiguity
 
