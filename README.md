@@ -1232,8 +1232,6 @@ Here are a few more balanced sound bites regarding writing concurrent software:
 - Concurrency bugs aren’t usually repeatable, so they are often ignored as one-offs instead of the true defects they are.
 - Concurrency often requires a fundamental change in design strategy.
 
-#
-
 <a name="chapter14">
 <h1>Chapter 14 -  Successive Refinement</h1>
 </a>
